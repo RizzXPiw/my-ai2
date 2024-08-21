@@ -124,7 +124,11 @@ isChromeExt: false,
 githubToken: null
 };
 
-const blackboxResponse = await axios.post('https://www.blackbox.ai/api/chat', data, { headers });
+const blackboxResponse = await fetch('https://www.blackbox.ai/api/chat', {
+method: "POST",
+headers,
+body: JSON.stringify(data)
+});
 
 if (blackboxResponse.status !== 200) {
 throw new Error('Response was not ok');
