@@ -134,7 +134,7 @@ if (blackboxResponse.status !== 200) {
 throw new Error('Response was not ok');
 }
 
-let blackboxData = blackboxResponse.data
+let blackboxData = await blackboxResponse.text();
 blackboxData = blackboxData.replace(/\$\@.*?\$\@|\*\*|\$/g, '');
 
 // Ganti teks yang diapit oleh tanda * menjadi <strong>
