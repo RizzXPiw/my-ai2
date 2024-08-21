@@ -133,6 +133,9 @@ throw new Error('Response was not ok');
 let blackboxData = blackboxResponse.data
 blackboxData = blackboxData.replace(/\$\@.*?\$\@|\*\*|\$/g, '');
 
+// Ganti teks yang diapit oleh tanda * menjadi <strong>
+blackboxData = blackboxData.replace(/\*(.*?)\*/g, '<strong>$1</strong>');
+
 res.json({
 status: true,
 creator: `${global.creator}`,
