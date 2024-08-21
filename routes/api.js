@@ -143,7 +143,10 @@ result: blackboxData,
 });
 } catch (e) {
 console.error('Error:', e);
-res.json({ status: false, message: e.message });
+res.json({ 
+status: false, 
+message: e.message 
+});
 }
 } else {
 res.json(loghandler.apikey);
