@@ -62,8 +62,6 @@ res.json(`${error.message}`);
 //========================================\\
 // Di Sini Ai Nya
 
-// let messageHistory = [];
-
 router.get("/ai", async (req, res) => {
 var apikey = req.query.apikey;
 var query = req.query.query;
