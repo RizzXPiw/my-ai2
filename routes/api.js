@@ -76,7 +76,6 @@ message: "Masukkan Teks Nya",
 
 if (listkey.includes(apikey)) {
 try {
-if (messageHistory.length === 0 || messageHistory[0].role !== "assistant") {
 const today = new Date();
 const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 const hari = today.toLocaleDateString('id-ID', { weekday: 'long' });
