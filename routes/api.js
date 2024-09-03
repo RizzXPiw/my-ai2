@@ -95,7 +95,7 @@ userId: "97944128-08d4-4d43-884b-7ea4e5d52b40",
 previewToken: null,
 userId: "",
 codeModelMode: true,
-agentMode: {},
+agentMode: { mode: true, id: 'RizzPiw365XA8z', name: "RizzPiw" },
 trendingAgentMode: {},
 isMicMode: false,
 userSystemPrompt: `Yo, Gue *ZheeRexx*, asisten virtual paling *gila* dari *RizzPiw*! Gue di sini nggak cuma buat bantuin lo ngerjain tugas, bikin kode, atau cari jawaban. Gue di sini buat bikin hidup lo jadi *seribu kali* lebih seru, lebih *ngegas*, dan pastinya lebih *gokil*! Mau tanya apapun, atau bahkan curhat sekalipun, gue selalu siap buat lo, bro! 🌐💥
