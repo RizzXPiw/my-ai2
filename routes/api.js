@@ -17,7 +17,6 @@ const listkey = global.apikey;
 const path = require('path');
 const os = require('os');
 const { performance } = require('perf_hooks');
-const crypto = require('crypto');
 const FormData = require('form-data');
 
 const { color, bgcolor } = require(__path + "/lib/color.js");
@@ -640,70 +639,6 @@ message: `Error: ${error.message}`
 });
 
 // Versi Pakai Post + New
-router.post("/ai-upload5", async (req, res, next) => {
-try {
-const id = crypto.randomUUID();
-const userId = crypto.randomBytes(8).toString('hex');
-
-const imageBuffer = req.files?.image?.data; 
-const inputText = req.body?.text || "Default Text";
-
-if (!imageBuffer) {
-return res.status(400).json({ error: "Image is required" });
-}
-
-const { ext, mime } = (await fileTypeFromBuffer(imageBuffer)) || {};
-if (!ext || !mime) {
-return res.status(400).json({ error: "Invalid file type" });
-}
-
-// Upload the image
-const form = new FormData();
-const blob = new Blob([imageBuffer], { type: mime });
-form.append('image', blob, `image.${ext}`);
-form.append('fileName', `image.${ext}`);
-form.append('userId', userId);
-
-const uploadResponse = await fetch("https://api.blackbox.ai/api/upload", {
-method: 'POST',
-body: form,
-});
-const uploadData = await uploadResponse.json();
-
-if (!uploadResponse.ok) {
-throw new Error("Image upload failed");
-}
-
-// Prepare JSON for chat
-const chatJson = {
-messages: [{
-id,
-content: inputText,
-role: "user",
-data: {
-imageBase64: uploadData.response,
-fileText: inputText
-}
-}],
-id,
-previewToken: null,
-userId,
-codeModelMode: true,
-agentMode: { mode: true, id: "tioYvlHC5x", name: "tio" },
-trendingAgentMode: {},
-isMicMode: false,
-isChromeExt: false,
-githubToken: null
-};
-
-const { data } = await axios.post('https://api.blackbox.ai/api/chat', chatJson);
-
-res.json({ chatResponse: data });
-} catch (error) {
-console.error("Error:", error);
-res.status(500).json({ error: error.message });
-}
-});
 
 router.get("/ai/gpt4", async (req, res, next) => {
 const gpt4 = require('../scraper/ai/gpt4.js')
