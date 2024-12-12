@@ -18,7 +18,6 @@ const path = require('path');
 const os = require('os');
 const { performance } = require('perf_hooks');
 const crypto = require('crypto');
-const { fileTypeFromBuffer } = require('file-type'); 
 const FormData = require('form-data');
 
 const { color, bgcolor } = require(__path + "/lib/color.js");
